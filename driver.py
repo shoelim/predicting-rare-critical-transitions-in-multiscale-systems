@@ -29,7 +29,7 @@ parser.add_argument('--future', type=int, default=500, metavar='N', help='number
 parser.add_argument('--trainbeg', type=int, default=0, metavar='N', help='index where first data point is used in training (default: 0)')
 parser.add_argument('--dt', type=float, default=0.01, metavar='LR', help='time step used in numerical integration (default: 0.01)')
 parser.add_argument('--num_layer', type=int, default=1, metavar='N', help='number of layer (default: 1)')
-parser.add_argument('--n_transient', type=int, default=100, metavar='N', help='number of initial data points discarded (default: 100)')
+parser.add_argument('--n_transient', type=int, default=0, metavar='N', help='number of initial data points discarded (default: 0)')
 
 #==============================================================================
 # Model selection settings
@@ -127,6 +127,22 @@ sparsity_gap = args.sparsity_gap
 noise_start = args.noise_start
 noise_gap = args.noise_gap
 num_layer = args.num_layer
+
+if num_layer >= 2:
+    n_res_start_2 = args.n_res_start_2
+    n_res_gap_2 = args.n_res_gap_2
+    spec_rad_start_2 = args.spec_rad_start_2
+    spec_rad_gap_2 = args.spec_rad_gap_2
+    sparsity_start_2 = args.sparsity_start_2
+    sparsity_gap_2 = args.sparsity_gap_2
+
+if num_layer >= 3:
+    n_res_start_3 = args.n_res_start_3
+    n_res_gap_3 = args.n_res_gap_3
+    spec_rad_start_3 = args.spec_rad_start_3
+    spec_rad_gap_3 = args.spec_rad_gap_3
+    sparsity_start_3 = args.sparsity_start_3
+    sparsity_gap_3 = args.sparsity_gap_3
 
 k=0
 count = 0
@@ -273,6 +289,6 @@ while k < n_ens and count <= max_iter:
         
 np.savetxt('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen+valid)+'-'+'{0}'.format(valid)+'_'+'{0}'.format(n_ens)+'ens_fin.csv', np.c_[osol], delimiter=',')
 
-select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg, dtau)
+select_and_plot_results(index_data, n_ens, trainlen+valid, valid, future-valid, trainbeg, dtau)
 
 print('Total time: ', timeit.default_timer()  - t0 )

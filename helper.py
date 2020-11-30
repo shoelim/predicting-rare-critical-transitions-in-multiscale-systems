@@ -40,13 +40,14 @@ def diff(x,index_data,dt):
     return y
 
 def select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg, dtau):
+    
     num_std1 = 8 #increase by one if N_eff = 0 (parameter for weighting in the ensemble)
     
     data_orig = pd.read_csv('xdata_eg'+'{0}'.format(index_data)+'.csv',header=None)
     data_orig = np.array(data_orig)
     data_orig = data_orig[:,1]
     
-    osol = pd.read_csv('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen+valid)+'-'+'{0}'.format(valid)+'_'+'{0}'.format(n_ens)+'ens_fin.csv',header=None)
+    osol = pd.read_csv('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen)+'-'+'{0}'.format(valid)+'_'+'{0}'.format(n_ens)+'ens_fin.csv',header=None)
     osol = np.array(osol)
     
     #####################################################################################################      
@@ -161,7 +162,7 @@ def select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg
     ax6.text(0.2, 0.7,'$N_{eff}$='+'{0}'.format(N_eff), fontsize=12) 
     plt.xlabel('$t$')
     plt.ylabel('$x$')
-    plt.savefig('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen+valid)+'_'+'{0}'.format(valid)+'_res.png')
+    plt.savefig('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen)+'_'+'{0}'.format(valid)+'_res.png')
     #plt.grid(False)
     #plt.show()
     
@@ -177,7 +178,7 @@ def select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg
     #ax2.text(0.1, 0.96,'(c)', fontsize=12, verticalalignment='top')
     plt.xlabel('$t$')
     plt.ylabel('$E_{out}$')
-    plt.savefig('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen+valid)+'_'+'{0}'.format(valid)+'_error.png')
+    plt.savefig('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen)+'_'+'{0}'.format(valid)+'_error.png')
     #plt.grid(b=None)
     #plt.show()
     
@@ -188,6 +189,6 @@ def select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg
     #ax3.text(0.1, 0.96,'(d)', fontsize=12, verticalalignment='top')
     plt.xlabel('$t$')
     plt.ylabel('$std(E_{out})$')
-    plt.savefig('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen+valid)+'_'+'{0}'.format(valid)+'_std.png')
+    plt.savefig('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen)+'_'+'{0}'.format(valid)+'_std.png')
     #plt.grid(b=None)
     #plt.show()
