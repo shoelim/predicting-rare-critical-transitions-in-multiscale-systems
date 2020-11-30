@@ -40,7 +40,7 @@ def diff(x,index_data,dt):
     return y
 
 def select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg, dtau):
-    num_std1 = 1 #increase by one if N_eff = 0 (parameter for weighting in the ensemble)
+    num_std1 = 8 #increase by one if N_eff = 0 (parameter for weighting in the ensemble)
     
     data_orig = pd.read_csv('xdata_eg'+'{0}'.format(index_data)+'.csv',header=None)
     data_orig = np.array(data_orig)
@@ -101,7 +101,7 @@ def select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg
     print('################### Selecting Paths From Ensemble Using Validation Set #######################')
     
     sel = []
-    it = 15 #maximum iterations
+    it = 10 #maximum iterations
     while len(sel) == 0 and it >= 0:
       if it == 0:
         print('No path selected!')
