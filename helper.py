@@ -2,7 +2,7 @@
 """
 Created on Mon Nov 30 11:47:56 2020
 
-@author: soonhoe
+@author: Soon Hoe Lim
 """
 
 import pandas as pd
@@ -46,7 +46,7 @@ def select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg
     data_orig = np.array(data_orig)
     data_orig = data_orig[:,1]
     
-    osol = pd.read_csv('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen)+'-'+'{0}'.format(valid)+'_'+'{0}'.format(n_ens)+'ens_fin.csv',header=None)
+    osol = pd.read_csv('Ex'+'{0}'.format(index_data)+'_'+'{0}'.format(trainlen+valid)+'-'+'{0}'.format(valid)+'_'+'{0}'.format(n_ens)+'ens_fin.csv',header=None)
     osol = np.array(osol)
     
     #####################################################################################################      
