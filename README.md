@@ -6,28 +6,28 @@
 -----------
 ### Description:
 
-n_ens = number of members in the ensemble 
+```n_ens``` = number of members in the ensemble 
 
-trainlen = length of training time series
+```trainlen``` = length of training time series
 
-valid = length of validation time series
+```valid``` = length of validation time series
 
-future = length of predicted time series
+```future``` = length of predicted time series
 
-trainbeg = index indicating the initial time on which the training time series runs
+```trainbeg``` = index indicating the initial time on which the training time series runs
 
-num_layer = number of layer in the network
+```num_layer``` = number of layer in the network
 
 
 ### Hyperparameter grid search: 
 
-- dimension of reservoir hidden states is selected from the interval [n_res_start, n_res_start + n_res_gridsize * n_res_gap)
+- dimension of reservoir hidden states is selected from the interval [```n_res_start```, ```n_res_start``` + ```n_res_gridsize``` * ```n_res_gap```)
 
-- spectral radius is selected from the interval [spec_rad_start, spec_rad_start + spec_rad_gap)
+- spectral radius is selected from the interval [```spec_rad_start```, ```spec_rad_start``` + ```spec_rad_gap```)
 
-- sparsity level is selected from the interval [sparsity_start, sparsity_start + sparsity_gap)
+- sparsity level is selected from the interval [```sparsity_start```, ```sparsity_start``` + ```sparsity_gap```)
 
-- noise level is selected from the interval [noise_start, noise_start + noise_gap)
+- noise level is selected from the interval [```noise_start```, ```noise_start``` + ```noise_gap```)
 
 - similarly for the hyperparameters in the second layer and so on 
 
