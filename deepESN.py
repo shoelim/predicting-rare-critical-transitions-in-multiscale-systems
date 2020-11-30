@@ -2,13 +2,6 @@
 """
 Created on Mon Jul  1 17:34:24 2019
 @author: Soon Hoe Lim
-Some comments:
-The following codes were modified and extended from the sample codes from 
-[https://github.com/cknd/pyESN], which implements only a simple version of shallow echo state network.
-At the moment the maximum number of layers is restricted to four, but extension to more layers 
-can also be considered. 
-Note that in general ESNs are very sensitive to hyperparameters, making tuning the optimal ones challenging. 
-Training the network becomes more challenging as the number of layers increases.
 """
 
 import numpy as np
@@ -108,6 +101,7 @@ class ESN():
         self.teacher_forcing = teacher_forcing
         self.silent = silent
         self.initweights()
+
 
     def initweights(self):
         # initialize recurrent weights:
@@ -350,7 +344,7 @@ class ESN():
                 if self.n_layer==4:
                     states4[n,:] = self._update(states4[n-1,:], states3[n,:], teachers_scaled[n-1,:],3,True)                    
                 if self.n_layer >=5:
-                    print('why need > 4 layers?')
+                    print('This is > 4 layers!')
                         
         # learn the weights, i.e. find the linear combination of collected
         # network states that is closest to the target output
@@ -401,7 +395,7 @@ class ESN():
             self.laststate4 = states4[-1, :]
             
         elif self.n_layer >= 5:
-            print('Are you sure to run with n_layer > 4?')
+            print('n_layer > 4 !')
         
         # Solve for W_out:
         self.W_out = np.dot(np.linalg.pinv(extended_states[transient:, :]),
@@ -490,7 +484,7 @@ class ESN():
                 if self.n_layer == 4:
                     states4[n + 1, :] = self._update(states4[n,:], states3[n+1,:], outputs[n, :],3,choice)
                 if self.n_layer >= 5:
-                    print('why need > 4 layers?')
+                    print('This is > 4 layers!')
 
             if self.n_layer == 1:
                 q=states1[n+1,:]
@@ -521,7 +515,7 @@ class ESN():
                 if self.nonlin > 2:
                     print('why need nonlin > 2?')
             else:
-                print('Are you sure to run more than 4 layers?')
+                print('This is more than 4 layers!')
 
             outputs[n + 1, :] = self.out_activation(np.dot(self.W_out, np.concatenate([q, inputs[n + 1, :]])))
 
