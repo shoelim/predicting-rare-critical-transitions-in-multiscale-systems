@@ -44,7 +44,7 @@ Here is an example to run the algorithm on the time series of Example 2:
 
 Here is an example to run the algorithm on the time series of Example 3:
 
-```python3 driver.py --name Example3 --n_ens 50 --trainlen 8233 --valid 5 --future 37 --trainbeg 200 --num_layer 1 --n_res_gridsize 7 --n_res_start 500 --n_res_gap 50 --spec_rad_start 0.95 --spec_rad_gap 0.05 --sparsity_start 0.1 --sparsity_gap 0.05 --noise_start 0.003 --noise_gap 0.001 --n_transient 100```
+```python3 driver.py --name Example3 --n_ens 50 --trainlen 8233 --valid 8 --future 37 --trainbeg 200 --num_layer 1 --n_res_gridsize 7 --n_res_start 500 --n_res_gap 50 --spec_rad_start 0.95 --spec_rad_gap 0.05 --sparsity_start 0.1 --sparsity_gap 0.05 --noise_start 0.003 --noise_gap 0.001 --n_transient 100```
 
 
 
