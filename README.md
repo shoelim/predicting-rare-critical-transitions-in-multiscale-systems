@@ -56,7 +56,7 @@ If needed, discard an initial transient by disregarding the first ```n_transient
 
 ```python3 driver.py --name Example3 --option 1 --n_ens 50 --trainlen 8233 --valid 5 --future 37 --trainbeg 200 --num_layer 1 --n_res_start_1 500 --n_res_delta_1 50 --n_res_total 7 --spec_rad_start_1 0.95 --spec_rad_delta_1 0.05 --spec_rad_total 1 --sparsity_start_1 0.1 --sparsity_delta_1 0.05 --sparsity_total 1 --noise_start 0.003 --noise_delta 0.001 --noise_total 1 --n_transient 100```
 
-- Here is an example to run the algorithm on other time series (using ```option``` = 0, for standardized data of Nino-3 index):
+- Here is an example to run the algorithm on other time series not studied in the paper (using ```option``` = 0, for standardized data of Nino-3 index):
 
 ```python3 driver.py --name Other --n_ens 20 --trainlen 1600 --valid 3 --future 6 --trainbeg 100 --num_layer 1 --n_res_start_1 100 --n_res_delta_1 50 --n_res_total 11 --spec_rad_start_1 0.9 --spec_rad_delta_1 0.1 --spec_rad_total 1 --sparsity_start_1 0.1 --sparsity_delta_1 0.1 --sparsity_total 1 --noise_start 0.001 --noise_delta 0.001 --noise_total 1 --option 0```
 
