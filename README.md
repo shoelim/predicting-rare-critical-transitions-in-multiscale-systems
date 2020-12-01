@@ -8,21 +8,21 @@
 
 ```option``` = option of running the baseline (0) or our algorithm (1) (see the paper in Reference below)
 
-```n_ens``` = number of networks independently trained for ensemble learning (denoted $N_{ens}$ in the paper)
+```n_ens``` = number of networks independently trained for ensemble learning (denoted <img src="https://render.githubusercontent.com/render/math?math=N_{ens}"> in the paper)
 
-```trainlen``` + 1 = length of accessible/given time series (denoted N+1 in the paper)
+```trainlen``` + 1 = length of accessible/given time series (denoted <img src="https://render.githubusercontent.com/render/math?math=N">+1 in the paper)
 
-```valid``` = length of validation time series (denoted $N_{\nu}$ in the paper)
+```valid``` = length of validation time series (denoted <img src="https://render.githubusercontent.com/render/math?math=N_{\nu}"> in the paper)
 
-```future``` = length of predicted time series (denoted M in the paper)
+```future``` = length of predicted time series (denoted <img src="https://render.githubusercontent.com/render/math?math=M"> in the paper)
 
-```trainbeg``` = index indicating the initial time (denoted $t_0$ in the paper) on which the given time series runs
+```trainbeg``` = index indicating the initial time (denoted <img src="https://render.githubusercontent.com/render/math?math=t_0"> in the paper) on which the given time series runs
 
-```num_layer``` = number of layer in the network (denoted $L+1$ in the paper)
+```num_layer``` = number of layer in the network (denoted <img src="https://render.githubusercontent.com/render/math?math=L">+1 in the paper)
 
-```dt``` = time step used in numerical integration generating the time series data (denoted $\delta t$ in the paper)
+```dt``` = time step used in numerical integration generating the time series data (denoted <img src="https://render.githubusercontent.com/render/math?math=\Delta t"> in the paper)
 
-so that length of time series used for training in the case of ```option`` = 0 is ```trainlen``` - ```valid``` + 1 and that in the case of ```option`` = 1 is ```trainlen``` - ```valid```
+so that length of time series used for training in the case of ```option``` = 0 is ```trainlen``` - ```valid``` + 1 and that in the case of ```option``` = 1 is ```trainlen``` - ```valid```
 
 
 ### Hyperparameter grid search: 
