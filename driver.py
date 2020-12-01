@@ -86,8 +86,10 @@ if not os.path.isdir('results'):
 
 print(args)
 
+option = args.option
+
 #==============================================================================
-# get dataset
+# Get dataset (scalar time series)
 #==============================================================================
 if args.name == 'Example1':
   data_orig = pd.read_csv("xdata_eg1.csv",header=None)
@@ -98,6 +100,12 @@ elif args.name == 'Example2':
 elif args.name == 'Example3':
   data_orig = pd.read_csv("xdata_eg3.csv",header=None)
   index_data = 3
+elif args.name == 'Other': 
+  if option == 1:
+	  print('Option must be 0 for other time series data!')
+  standardize_data()
+  data_orig = pd.read_csv("other_normalized.csv",header=None)
+  index_data = 4
 else:
   print('Unexpected data!')
 
@@ -105,7 +113,6 @@ else:
 # Training, Model Selection and Prediction
 #==============================================================================
 t0 = timeit.default_timer()
-option = args.option
 
 #training/testing parameters
 n_ens = args.n_ens
@@ -117,9 +124,9 @@ trainbeg = args.trainbeg
 
 data_orig = np.array(data_orig)
 data_orig = data_orig[:,1]
-forcing = diff(data_orig,index_data,dt)
 
 if option == 1:
+    forcing = diff(data_orig,index_data,dt)
     data = forcing
 elif option == 0:
     data = data_orig

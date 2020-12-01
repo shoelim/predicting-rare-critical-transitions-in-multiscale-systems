@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import sem
 
+
 def F(x,index_data):
     if index_data == 1:
         return x-x**3
@@ -19,12 +20,14 @@ def F(x,index_data):
         return x*(1-x)*(1+x)*(x-2)*(x+2)
     else:
         print('Unexpected data!')
-        
+
+
 def Ft(x,t,index_data):
     if index_data == 3:
         return x*(1-x)*(1+x)*(x-2)*(x+2)+0.1*np.cos(12*np.pi*t)
     else:
         print('Unexpected data!')
+
 
 def diff(x,index_data,dt):
     y=np.zeros((len(x),1))
@@ -39,9 +42,29 @@ def diff(x,index_data,dt):
             print('Unexpected data!')
     return y
 
+
+def standardize_data():
+  data_orig = pd.read_csv("other.csv",header=None) #assuming this is a scalar time series augmented with time
+  data_orig = np.array(data_orig)
+  
+  std = np.std(data_orig[:,1])
+  bias = np.mean(data_orig[:,1])
+  data_orig[:,1] = (data_orig[:,1]-bias)/std
+  print(data_orig[:,0].shape)
+
+  #save data into a file
+  np.savetxt('other_normalized.csv',np.c_[data_orig[:,0], data_orig[:,1]], delimiter=',') 
+
+
 def select_and_plot_results(index_data, n_ens, trainlen, valid, future, trainbeg, dtau, option):
     
-    data_orig = pd.read_csv('xdata_eg'+'{0}'.format(index_data)+'.csv',header=None)
+    if index_data == 1 or index_data == 2 or index_data == 3:
+      data_orig = pd.read_csv('xdata_eg'+'{0}'.format(index_data)+'.csv',header=None)
+    elif index_data == 4:
+      data_orig = pd.read_csv('other_normalized.csv',header=None)
+    else:
+      print('Unexpected data!')
+      
     data_orig = np.array(data_orig)
     data_orig = data_orig[:,1]
     
